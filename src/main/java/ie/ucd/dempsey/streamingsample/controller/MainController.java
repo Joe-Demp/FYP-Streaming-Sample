@@ -87,6 +87,13 @@ public class MainController {
         return dataList;
     }
 
+    private static String listToString(List<Pair<Instant, Double>> listOfPairs) {
+        return listOfPairs.stream()
+                .map(pair -> new StringBuilder().append(pair.first).append(' ').append(pair.second).append('\n'))
+                .reduce(new StringBuilder(), StringBuilder::append)
+                .toString();
+    }
+
     @PostMapping("/submit")
     @ResponseStatus(value = HttpStatus.CREATED)
     public void acceptStreamAsString(@RequestBody String streamData) throws IOException {
@@ -96,7 +103,8 @@ public class MainController {
 
     @GetMapping
     @ResponseStatus(value = HttpStatus.OK)
-    public List<Pair<Instant, Double>> getSubmittedContent() throws IOException {
-        return readDataFromFile();
+    public String getSubmittedContent() throws IOException {
+        List<Pair<Instant, Double>> dataList = readDataFromFile();
+        return listToString(dataList);
     }
 }
