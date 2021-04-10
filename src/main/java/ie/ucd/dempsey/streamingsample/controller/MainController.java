@@ -107,4 +107,8 @@ public class MainController {
         List<Pair<Instant, Double>> dataList = readDataFromFile();
         return listToString(dataList);
     }
+
+    @GetMapping("/dryrun")
+    @ResponseStatus(value = HttpStatus.OK)
+    public void dryRun() {}
 }
