@@ -38,3 +38,4 @@ build/
 
 ### tar files ###
 *.tar
+/streaming-sample-0.0.1-SNAPSHOT.jar
