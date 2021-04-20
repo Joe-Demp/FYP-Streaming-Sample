@@ -13,6 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>streaming-sample</name>
     <description>A sample web service that receives a data stream and can do basic processing</description>
+    <packaging>jar</packaging>
 
     <properties>
         <java.version>11</java.version>
@@ -48,14 +49,25 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>repackage</id>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <outputDirectory>.</outputDirectory>
+                </configuration>
             </plugin>
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
                     <outputDirectory>.</outputDirectory>
                 </configuration>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 
