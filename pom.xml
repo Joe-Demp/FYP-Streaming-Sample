@@ -10,7 +10,7 @@
     </parent>
     <groupId>ie.ucd.dempsey</groupId>
     <artifactId>streaming-sample</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1</version>
     <name>streaming-sample</name>
     <description>A sample web service that receives a data stream and can do basic processing</description>
     <packaging>jar</packaging>
