@@ -28,6 +28,7 @@ public class MainController {
 
     public MainController() throws IOException {
         createDataFile();
+        ensureFileExists();
     }
 
     private static void createDataFile() throws IOException {
@@ -37,11 +38,12 @@ public class MainController {
         } else if (!Files.isDirectory(directoryPath)) {
             throw new RuntimeException("Cannot create data file directory. Quitting");
         }
+    }
 
-        // todo remove this when preserving state
-        boolean fileExisted = Files.deleteIfExists(dataFilePath);
-        logger.info("Data file existed? {}", fileExisted);
-        Files.createFile(dataFilePath);
+    private static void ensureFileExists() throws IOException {
+        boolean fileExisted = Files.exists(dataFilePath);
+        logger.info("Data file exists? {}", fileExisted);
+        if (!fileExisted) Files.createFile(dataFilePath);
     }
 
     private static List<Pair<Instant, Double>> parseStreamData(String streamData) throws IOException {
